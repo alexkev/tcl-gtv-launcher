@@ -5,6 +5,12 @@ debloats the TV and installs it.
 
 **Tested on:** TCL G03_4K_US (Android 11, build GTV93) and TCL Smart TV (Android 12, build AS50).
 
+![Home: Your apps along the bottom over a Google Photos background](docs/home.jpg)
+
+| Continue watching | Recently added on Plex |
+|---|---|
+| ![Your apps with the Continue watching row below](docs/continue-watching.jpg) | ![Recently added on Plex and For you on YouTube rows](docs/plex.jpg) |
+
 ## What you get
 
 - **Top bar:** Home / Live / Apps tabs, a screensaver button that starts Google's own screensaver, quick
