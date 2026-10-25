@@ -89,6 +89,15 @@ TV_HOST=<tv ip> cleanyourtv/tools/venv/bin/python cleanyourtv/tools/tv.py "setti
 - **`kit/push.py`:** cleanyourtv's `b64push.py`, decoding each chunk as it goes, because the 92 MB Plezy
   APK timed out otherwise.
 
+## Network
+
+No ads, analytics or telemetry. The launcher contacts only:
+- **Weather:** ipapi.co for the approximate location (skipped when `weather_city` is set) and Open-Meteo.
+- **Background:** your Google Photos shared-album page and its images, when you give an album link.
+- **Plex:** plex.tv to link your account and find your server, then your own server. Show cards look up
+  the next episode there; without Plezy, links go through discover.provider.plex.tv and watch.plex.tv.
+- **Posters:** the thumbnail images that your apps publish with their Continue watching and YouTube rows.
+
 ## Licence
 
 MIT, see [LICENSE](LICENSE). `kit/push.py` is adapted from cleanyourtv's `tools/b64push.py` (MIT,
