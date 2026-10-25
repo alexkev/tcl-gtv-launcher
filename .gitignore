@@ -1,0 +1,11 @@
+# Per-TV output and caches
+backup/
+shots/
+kit/.cache/
+# Build
+launcher/.gradle/
+launcher/build/
+launcher/app/build/
+launcher/local.properties
+*.apk
+.DS_Store

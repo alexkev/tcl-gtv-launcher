@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Google TV-style home. 1080p TVs at density 320 are 960 x 540 dp; sizes are measured off the stock launcher. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <!-- Two photo layers crossfade; the scrim keeps text readable over them. -->
+    <ImageView
+        android:id="@+id/photo_a"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/photo_b"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:scaleType="centerCrop" />
+
+    <View
+        android:id="@+id/scrim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <view
+            class="tv.cleanhome.gtv.MainActivity$CenterScroll"
+            android:id="@+id/home_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/home_rows"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </view>
+
+        <ScrollView
+            android:id="@+id/apps_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="100dp"
+            android:paddingBottom="48dp"
+            android:scrollbars="none"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/apps_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="50dp"
+                android:paddingEnd="50dp" />
+        </ScrollView>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="58dp"
+        android:paddingEnd="58dp">
+
+        <LinearLayout
+            android:id="@+id/nav_pill"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp">
+
+            <TextView android:id="@+id/tab_home" style="@style/Tab" android:text="Home" />
+            <TextView android:id="@+id/tab_live" style="@style/Tab" android:text="Live" />
+            <TextView android:id="@+id/tab_apps" style="@style/Tab" android:text="Apps" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/action_pill"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp">
+
+            <ImageView android:id="@+id/btn_screensaver" style="@style/PillIcon"
+                android:contentDescription="Screensaver" android:src="@drawable/ic_frame" />
+            <ImageView android:id="@+id/btn_quick" style="@style/PillIcon"
+                android:contentDescription="Quick Settings" android:src="@drawable/ic_settings_arrow" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextClock
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format12Hour="h:mm"
+            android:format24Hour="H:mm"
+            android:textColor="#C4C7C5"
+            android:textSize="19sp" />
+
+        <View
+            android:id="@+id/weather_divider"
+            android:layout_width="2dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="#C4C7C5" />
+
+        <TextView
+            android:id="@+id/weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#C4C7C5"
+            android:textSize="19sp" />
+    </LinearLayout>
+
+    <!-- Label under the focused screensaver / quick settings button. -->
+    <TextView
+        android:id="@+id/tooltip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:visibility="invisible" />
+
+    <!-- Quick settings: a floating card that slides in from the right, like Google TV's. -->
+    <LinearLayout
+        android:id="@+id/quick_panel"
+        android:layout_width="272dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:padding="14dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="2dp"
+                android:paddingTop="4dp">
+
+                <TextClock
+                    android:id="@+id/quick_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:format12Hour="EEE, MMM d"
+                    android:format24Hour="EEE, MMM d"
+                    android:textColor="#C4C7C5"
+                    android:textSize="12sp" />
+
+                <TextClock
+                    android:id="@+id/quick_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:format12Hour="h:mm a"
+                    android:format24Hour="H:mm"
+                    android:textColor="#E3E3E3"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/all_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:clickable="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/all_settings_icon"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:duplicateParentState="true"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_settings" />
+
+                <TextView
+                    android:id="@+id/all_settings_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="All settings"
+                    android:textColor="#E3E3E3"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/quick_tiles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </LinearLayout>
+</FrameLayout>

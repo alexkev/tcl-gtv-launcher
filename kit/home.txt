@@ -1,0 +1,3 @@
+# Batch 5: custom launcher tv.cleanhome.gtv is Home
+com.google.android.apps.tv.launcherx
+com.google.android.tungsten.setupwraith

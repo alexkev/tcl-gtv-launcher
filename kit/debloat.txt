@@ -1,0 +1,30 @@
+# Batch 1: TCL and Google telemetry
+com.tcl.bi                                  # TCL BI analytics
+com.tcl.xian.StartandroidService            # background reporting service
+com.google.android.feedback                 # crash / feedback reporting
+# Batch 2: TCL content, promo and partner auto-installs
+com.tcl.dashboard                           # TCL dashboard / promo backend
+com.tcl.partnercustomizer                   # partner customisation channel, promo rows
+com.tcl.messagebox                          # TCL message / promo box
+com.tcl.esticker                            # sticker overlay
+com.tcl.waterfall.overseas                  # TCL web-video portal
+android.autoinstalls.config.google.gtvpai   # silently installs partner apps
+com.google.android.partnersetup             # partner-app attribution
+com.google.android.onetimeinitializer       # one-time setup leftovers
+# Batch 3: background services and preloaded extras
+com.tcl.guard                               # TCL online support
+com.tcl.usercenter                          # TCL account nags
+com.tcl.ocean.instructions                  # e-manual
+com.tcl.android.webview                     # TCL WebView; Google WebView stays the provider
+org.chromium.webview_shell                  # WebView test shell
+com.google.android.syncadapters.calendar    # calendar sync
+com.google.android.play.games               # Play Games
+com.tcl.gallery                             # TCL photo gallery
+# Batch 4: off by the owner's choice
+com.tcl.smartalexa                          # Alexa bridge
+com.tcl.assistant                           # TCL voice assistant (Google voice kept)
+com.tcl.tv.tclchannel                       # TCL Channel (FAST)
+com.tcl.tv.plus                             # TCL+
+com.tcl.channelplus                         # TCL channel plus IPTV input
+com.google.android.youtube.tvmusic          # YouTube Music
+com.tcl.ui_mediaCenter                      # TCL USB media player
